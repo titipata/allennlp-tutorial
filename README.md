@@ -1,9 +1,10 @@
-# Introduction to AllenNLP (Kording Lab teching)
+# Introduction to AllenNLP 
 
-Tutorial of [`AllenNLP`](https://allennlp.org/) at Kording Lab (November, 2018). 
+Tutorial of [`AllenNLP`](https://allennlp.org/) at [Kording Lab](http://kordinglab.com) (November, 2018). 
 Here, we implement deep learning model for text classification using AllenNLP. 
 We will go through basic concept on how to implement 
-classifier and how to use the AllenNLP library. All the materials are listed below:
+classifier and how to use the AllenNLP library. All the materials are listed below.
+
 
 ## Materials
 
@@ -16,5 +17,7 @@ classifier and how to use the AllenNLP library. All the materials are listed bel
 allennlp train example_training.json -s output --include-package venue
 ```
 
+`example_training.json` contains specification for the triaining e.g. 
+`"cuda_device": -1` means using CPU, `"num_epochs": 40` means train for 40 epochs. 
 More information can be found at [allenai/allennlp](https://github.com/allenai/allennlp) 
 and [allenai/allennlp-as-a-library-example](https://github.com/allenai/allennlp-as-a-library-example)

@@ -61,8 +61,7 @@ class AcademicPaperClassifier(Model):
         output_dict = {
             'logits': logits, 
             'class_probabilities': class_probabilities,
-            'predicted_label': labels, 
-            'labels': labels
+            'predicted_label': labels
         }
         if label is not None:
             loss = self.loss(logits, label)
