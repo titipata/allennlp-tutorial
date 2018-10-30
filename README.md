@@ -19,5 +19,12 @@ allennlp train example_training.json -s output --include-package venue
 
 The file `example_training.json` contains specification for the training e.g. 
 `"cuda_device": -1` means using CPU, `"num_epochs": 40` means train for 40 epochs. 
+
+You can also see the experiment output via TensorBoard by running
+
+```bash
+tensorboard --logdir output
+```
+
 More information can be found at [allenai/allennlp](https://github.com/allenai/allennlp) 
 and [allenai/allennlp-as-a-library-example](https://github.com/allenai/allennlp-as-a-library-example)
