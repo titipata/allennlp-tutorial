@@ -28,3 +28,9 @@ tensorboard --logdir output
 
 More information can be found at [allenai/allennlp](https://github.com/allenai/allennlp) 
 and [allenai/allennlp-as-a-library-example](https://github.com/allenai/allennlp-as-a-library-example)
+
+
+## Predict which journal to submit in MEDLINE
+
+We do a fun experiment where we train the same model to classify 
+publications from sample 110 journals from MEDLINE. We got accuracy of 64.9 percent on validation dataset. See `allennlp_tutorial.ipynb` last section for the demo.
