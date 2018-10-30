@@ -159,5 +159,7 @@ dmypy.json
 pyvenv.cfg
 pip-selfcheck.json
 
+# don't push any tar file
+*.tar.gz
 
 # End of https://www.gitignore.io/api/macos,python
