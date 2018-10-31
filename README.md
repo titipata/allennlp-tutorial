@@ -35,7 +35,7 @@ and [allenai/allennlp-as-a-library-example](https://github.com/allenai/allennlp-
 We do a fun experiment where we train the same model to classify 
 publications from sample 110 journals from MEDLINE. We got accuracy of 64.9 percent on validation dataset. See `allennlp_tutorial.ipynb` last section for the demo.
 
-[WIP] You can also run the demo locally by downloading the model
+[WIP] You can also run the demo locally by downloading the model and run `allennlp.service.server_simple` as follows
 
 ```bash
 wget https://s3-us-west-2.amazonaws.com/allennlp-tutorial/model.tar.gz
@@ -49,4 +49,4 @@ python -m allennlp.service.server_simple \
     --static-dir static_html
 ```
 
-This will produce the bar chart example of venue probability.
+This will produce the bar chart output of venues' probability.
