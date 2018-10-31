@@ -33,25 +33,16 @@ and [allenai/allennlp-as-a-library-example](https://github.com/allenai/allennlp-
 ## Predict which journal to submit in MEDLINE
 
 We do a fun experiment where we train the same model to classify
-publications from sample 110 journals from MEDLINE. We got accuracy of 64.9 percent on validation dataset. See `allennlp_tutorial.ipynb` last section for the demo.
+publications from sample 110 journals from MEDLINE. To train the model, 
+you can run the script below. We got an accuracy of 64.9 percent on validation dataset 
+(not too bad!). 
 
-## Installation
-
-Here is a list of dependencies:
-
-- pytorch >= 0.4
-- spacy
-- allennlp >= 0.7
-
-You can install these packages using `conda` and `pip` commands as follows:
-
-```sh
-conda install pytorch torchvision -c pytorch
-conda install -c conda-forge spacy
-pip install "allennlp>=0.7"
+```bash
+allennlp train example_training_110venue.json -s output_110venue --include-package venue
 ```
 
-[WIP] You can also run the demo locally by downloading the model and run `allennlp.service.server_simple` as follows
+You can see how to use the model in the last section of `allennlp_tutorial.ipynb`. 
+Alternatively, you can also run the demo locally by downloading the trained model and run `allennlp.service.server_simple` as follows
 
 ```bash
 wget https://s3-us-west-2.amazonaws.com/allennlp-tutorial/model.tar.gz
@@ -66,3 +57,22 @@ python -m allennlp.service.server_simple \
 ```
 
 This will produce the bar chart output of venues' probability.
+
+<img src="figures/demo.png\" width="500"/>
+
+
+## Installation
+
+Here is a list of dependencies for the demo:
+
+- pytorch >= 0.4
+- spacy
+- allennlp >= 0.7
+
+You can install these packages using `conda` and `pip` commands as follows:
+
+```sh
+conda install pytorch torchvision -c pytorch
+conda install -c conda-forge spacy
+pip install "allennlp>=0.7"
+```
