@@ -2,7 +2,7 @@
 
 <head>
   <title>
-    Academic Paper Classifier
+    Which journal to submit?
   </title>
   <link rel="stylesheet" type="text/css" href="demo.css" />
 </head>
@@ -194,6 +194,20 @@
             legend: {
                 display: false
             },
+            scales: {
+              yAxes: [{
+                scaleLabel: {
+                  display: true, 
+                  labelString: "Journals"
+                }
+              }], 
+              xAxes: [{
+                scaleLabel: {
+                  display: true, 
+                  labelString: "Probability"
+                }
+              }]
+            }
           }
         });
       }

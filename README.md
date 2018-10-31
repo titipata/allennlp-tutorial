@@ -50,7 +50,6 @@ python -m allennlp.service.server_simple \
     --archive-path model.tar.gz \
     --predictor venue_predictor \
     --include-package venue \
-    --title "Venue Classifier" \
     --field-name title \
     --field-name paperAbstract \
     --static-dir static_html
@@ -58,20 +57,22 @@ python -m allennlp.service.server_simple \
 
 This will produce the bar chart output of venues' probability.
 
-<img src="figures/demo.png\" width="500"/>
+<img src="figures/demo.png" width="900"/>
 
 
 ## Installation
 
 Here is a list of dependencies for the demo:
 
-- pytorch >= 0.4
-- spacy
-- allennlp >= 0.7
+```bash
+pytorch >= 0.4
+spacy
+allennlp >= 0.7
+```
 
 You can install these packages using `conda` and `pip` commands as follows:
 
-```sh
+```bash
 conda install pytorch torchvision -c pytorch
 conda install -c conda-forge spacy
 pip install "allennlp>=0.7"
