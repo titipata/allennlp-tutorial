@@ -1,193 +1,205 @@
 <html>
-    <head>
-        <title>
-            Academic Paper Classifier
-        </title>
-        <link rel = "stylesheet" type = "text/css" href = "demo.css" />
-    </head>
-    <body>
-        <div class="pane-container">
-            <div class="pane model">
-                <div class="pane__left model__input">
-                    <div class="model__content">
-                        <h2><span>Academic Paper Classifier</span></h2>
-                        <div class="model__content">
 
-                            <div class="form__field">
-                                <label for="input-title">title</label>
-                                <input type="text" id="input-title" type="text" required value placeholder="input goes here">
-                            </div>
+<head>
+  <title>
+    Academic Paper Classifier
+  </title>
+  <link rel="stylesheet" type="text/css" href="demo.css" />
+</head>
 
-                            <div class="form__field">
-                                <label for="input-paperAbstract">paperAbstract</label>
-                                <input type="text" id="input-paperAbstract" type="text" required value placeholder="input goes here">
-                            </div>
-
-                            <div class="form__field form__field--btn">
-                                <button type="button" class="btn btn--icon-disclosure" onclick="predict()">Predict</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pane__right model__output model__output--empty">
-                    <div class="pane__thumb"></div>
-                    <div class="model__content">
-                        <div id="output" class="output">
-                            <div class="placeholder">
-                                <div class="placeholder__content">
-                                    <p>Run model to view results</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<body>
+  <div class="pane-container">
+    <div class="pane model">
+      <div class="pane__left model__input">
+        <div class="model__content">
+          <h2><span>Which journal to submit?</span></h2>
+          <div style="padding: 1.875em 0;">
+            <div class="form__field">
+              <label for="input-title">title</label>
+              <input type="text" id="input-title" required value placeholder="input goes here" />
             </div>
+
+            <div class="form__field">
+              <label for="input-paperAbstract">abstract</label>
+              <textarea type="text" id="input-paperAbstract" required value placeholder="input goes here"></textarea>
+            </div>
+
+            <div class="form__field form__field--btn">
+              <button type="button" class="btn btn--icon-disclosure" onclick="predict()">Predict</button>
+            </div>
+          </div>
         </div>
-    </body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
-    <script>
-    function predict() {
-        var quotedFieldList = ['title','paperAbstract'];
-        var data = {};
-        quotedFieldList.forEach(function(fieldName) {
-            data[fieldName] = document.getElementById("input-" + fieldName).value;
-        })
-        var journals = [
-            'PloS one',
-            'Proceedings of the National Academy of Sciences of the United States of America',
-            'Nature communications',
-            'Oncotarget',
-            'BMJ open',
-            'BioMed research international',
-            'Biochimica et biophysica acta',
-            'The Journal of neuroscience : the official journal of the Society for Neuroscience',
-            'Biochemical and biophysical research communications',
-            'Journal of virology',
-            'International journal of molecular sciences',
-            'Journal of immunology (Baltimore, Md. : 1950)',
-            'Nucleic acids research',
-            'Medicine',
-            'Journal of nanoscience and nanotechnology',
-            'BMC public health',
-            'World journal of gastroenterology',
-            'Blood',
-            'BMC genomics',
-            'Antimicrobial agents and chemotherapy',
-            'Nature',
-            'Vaccine',
-            'NeuroImage',
-            'Asian Pacific journal of cancer prevention : APJCP',
-            'Genetics and molecular research : GMR',
-            'BMC cancer',
-            'Science (New York, N.Y.)',
-            'TheScientificWorldJournal',
-            'Frontiers in psychology',
-            'PLoS genetics',
-            'Neuroscience',
-            'International journal of clinical and experimental pathology',
-            'Journal of clinical and diagnostic research : JCDR',
-            'International journal of environmental research and public health',
-            'Cancer research',
-            'Biosensors & bioelectronics',
-            'Advances in experimental medicine and biology',
-            'BMC research notes',
-            'Journal of clinical microbiology',
-            'eLife',
-            'International journal of cardiology',
-            'Applied microbiology and biotechnology',
-            'Journal of vision',
-            'The Journal of clinical endocrinology and metabolism',
-            'Bioinformatics (Oxford, England)',
-            'PLoS neglected tropical diseases',
-            'Brain research',
-            'Frontiers in microbiology',
-            'Biophysical journal',
-            'PLoS pathogens',
-            'Current biology : CB',
-            'Gene',
-            'Anticancer research',
-            'Journal of neurophysiology',
-            'Schizophrenia research',
-            'Pediatrics',
-            'Cell',
-            'Journal of bacteriology',
-            'Psychiatry research',
-            'Proceedings. Biological sciences / The Royal Society',
-            'SpringerPlus',
-            'Environmental monitoring and assessment',
-            'Studies in health technology and informatics',
-            'PLoS computational biology',
-            'Behavioural brain research',
-            'The Journal of craniofacial surgery',
-            'Journal of affective disorders',
-            'Medical physics',
-            'BMC health services research',
-            'The Journal of physiology',
-            'BMC bioinformatics',
-            'Genome announcements',
-            'Journal of chemical theory and computation',
-            'Oncogene',
-            'Tumour biology : the journal of the International Society for Oncodevelopmental Biology and Medicine',
-            'Chinese medical journal',
-            'Neurology',
-            'The American journal of cardiology',
-            'Evidence-based complementary and alternative medicine : eCAM',
-            'BMC infectious diseases',
-            'Journal of hypertension',
-            'British journal of cancer',
-            'Clinical infectious diseases : an official publication of the Infectious Diseases Society of America',
-            'The Journal of clinical investigation',
-            'The Journal of infectious diseases',
-            'Human molecular genetics',
-            'International journal of cancer',
-            "Journal of Alzheimer's disease : JAD",
-            'Fertility and sterility',
-            'Journal of proteomics',
-            'International journal of radiation oncology, biology, physics',
-            'Physics in medicine and biology',
-            'Cancer',
-            'Malaria journal',
-            'International journal of systematic and evolutionary microbiology',
-            'Journal of clinical oncology : official journal of the American Society of Clinical Oncology',
-            'Social science & medicine (1982)',
-            'Neuron',
-            'Stroke; a journal of cerebral circulation',
-            'International journal of clinical and experimental medicine',
-            'American journal of public health',
-            'Materials science & engineering. C, Materials for biological applications',
-            'Urology',
-            'Infection and immunity',
-            'Parasites & vectors',
-            'The Journal of urology',
-            'Surgical endoscopy',
-            'International journal of biological macromolecules',
-            'Journal of proteome research',
-            'Spine'
-        ]
+      </div>
+      <div class="pane__right model__output model__output--empty">
+        <div class="pane__thumb"></div>
+        <div class="model__content">
+          <div id="output" class="output">
+            <div class="placeholder">
+              <div class="placeholder__content">
+                <p>Run model to view results</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+<script>
+  function predict() {
+    var quotedFieldList = ['title', 'paperAbstract'];
+    var data = {};
+    quotedFieldList.forEach(function (fieldName) {
+      data[fieldName] = document.getElementById("input-" + fieldName).value;
+    })
+    var journals = [
+      'PloS one',
+      'Proceedings of the National Academy of Sciences of the United States of America',
+      'Nature communications',
+      'Oncotarget',
+      'BMJ open',
+      'BioMed research international',
+      'Biochimica et biophysica acta',
+      'The Journal of neuroscience : the official journal of the Society for Neuroscience',
+      'Biochemical and biophysical research communications',
+      'Journal of virology',
+      'International journal of molecular sciences',
+      'Journal of immunology (Baltimore, Md. : 1950)',
+      'Nucleic acids research',
+      'Medicine',
+      'Journal of nanoscience and nanotechnology',
+      'BMC public health',
+      'World journal of gastroenterology',
+      'Blood',
+      'BMC genomics',
+      'Antimicrobial agents and chemotherapy',
+      'Nature',
+      'Vaccine',
+      'NeuroImage',
+      'Asian Pacific journal of cancer prevention : APJCP',
+      'Genetics and molecular research : GMR',
+      'BMC cancer',
+      'Science (New York, N.Y.)',
+      'TheScientificWorldJournal',
+      'Frontiers in psychology',
+      'PLoS genetics',
+      'Neuroscience',
+      'International journal of clinical and experimental pathology',
+      'Journal of clinical and diagnostic research : JCDR',
+      'International journal of environmental research and public health',
+      'Cancer research',
+      'Biosensors & bioelectronics',
+      'Advances in experimental medicine and biology',
+      'BMC research notes',
+      'Journal of clinical microbiology',
+      'eLife',
+      'International journal of cardiology',
+      'Applied microbiology and biotechnology',
+      'Journal of vision',
+      'The Journal of clinical endocrinology and metabolism',
+      'Bioinformatics (Oxford, England)',
+      'PLoS neglected tropical diseases',
+      'Brain research',
+      'Frontiers in microbiology',
+      'Biophysical journal',
+      'PLoS pathogens',
+      'Current biology : CB',
+      'Gene',
+      'Anticancer research',
+      'Journal of neurophysiology',
+      'Schizophrenia research',
+      'Pediatrics',
+      'Cell',
+      'Journal of bacteriology',
+      'Psychiatry research',
+      'Proceedings. Biological sciences / The Royal Society',
+      'SpringerPlus',
+      'Environmental monitoring and assessment',
+      'Studies in health technology and informatics',
+      'PLoS computational biology',
+      'Behavioural brain research',
+      'The Journal of craniofacial surgery',
+      'Journal of affective disorders',
+      'Medical physics',
+      'BMC health services research',
+      'The Journal of physiology',
+      'BMC bioinformatics',
+      'Genome announcements',
+      'Journal of chemical theory and computation',
+      'Oncogene',
+      'Tumour biology : the journal of the International Society for Oncodevelopmental Biology and Medicine',
+      'Chinese medical journal',
+      'Neurology',
+      'The American journal of cardiology',
+      'Evidence-based complementary and alternative medicine : eCAM',
+      'BMC infectious diseases',
+      'Journal of hypertension',
+      'British journal of cancer',
+      'Clinical infectious diseases : an official publication of the Infectious Diseases Society of America',
+      'The Journal of clinical investigation',
+      'The Journal of infectious diseases',
+      'Human molecular genetics',
+      'International journal of cancer',
+      "Journal of Alzheimer's disease : JAD",
+      'Fertility and sterility',
+      'Journal of proteomics',
+      'International journal of radiation oncology, biology, physics',
+      'Physics in medicine and biology',
+      'Cancer',
+      'Malaria journal',
+      'International journal of systematic and evolutionary microbiology',
+      'Journal of clinical oncology : official journal of the American Society of Clinical Oncology',
+      'Social science & medicine (1982)',
+      'Neuron',
+      'Stroke; a journal of cerebral circulation',
+      'International journal of clinical and experimental medicine',
+      'American journal of public health',
+      'Materials science & engineering. C, Materials for biological applications',
+      'Urology',
+      'Infection and immunity',
+      'Parasites & vectors',
+      'The Journal of urology',
+      'Surgical endoscopy',
+      'International journal of biological macromolecules',
+      'Journal of proteome research',
+      'Spine'
+    ]
 
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/predict');
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.onload = function() {
-            if (xhr.status == 200) {
-                var canvas = '<canvas id="myChart" width="400" height="800"></canvas>';
-                document.getElementById("output").innerHTML = canvas;
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/predict');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function () {
+      if (xhr.status == 200) {
+        var canvas = '<canvas id="myChart" width="400" height="800"></canvas>';
+        document.getElementById("output").innerHTML = canvas;
 
-                var response = JSON.parse(xhr.responseText);
+        var response = JSON.parse(xhr.responseText);
 
-                var ctx = document.getElementById("myChart");
-                var barChart = new Chart(ctx, {
-                    type: 'horizontalBar',
-                    data: {
-                        labels: journals,
-                        datasets: [{
-                            data: response['class_probabilities']
-                        }]
-                    }
-                });
-            }
-        };
-        xhr.send(JSON.stringify(data));
-    }
-    </script>
+        var probs = response['class_probabilities'];
+
+        var sortedInd = Array.from(Array(probs.length).keys())
+                  .sort((a, b) => probs[a] > probs[b] ? -1 : (probs[b] > probs[a]) | 0);
+
+        var ctx = document.getElementById("myChart");
+        var barChart = new Chart(ctx, {
+          type: 'horizontalBar',
+          data: {
+            labels: sortedInd.map(i => journals[i]),
+            datasets: [{
+              data: sortedInd.map(i => probs[i])
+            }]
+          },
+          options: {
+            legend: {
+                display: false
+            },
+          }
+        });
+      }
+    };
+    xhr.send(JSON.stringify(data));
+  }
+</script>
+
 </html>

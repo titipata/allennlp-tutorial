@@ -1,5 +1,4 @@
-body,
-html {
+body, html {
   min-width: 48em;
   background: #f9fafc;
   font-size: 16px
@@ -14,10 +13,7 @@ section {
   background: #fff
 }
 
-code,
-code span,
-pre,
-.output {
+code, code span, pre, .output {
   font-family: 'Roboto Mono', monospace!important
 }
 
@@ -25,10 +21,7 @@ code {
   background: #f6f8fa
 }
 
-li,
-p,
-td,
-th {
+li, p, td, th {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.125em;
@@ -40,8 +33,7 @@ pre {
   margin: 2em 0
 }
 
-h1,
-h2 {
+h1, h2 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 300
@@ -63,8 +55,7 @@ hr {
   background: #f6f8fa
 }
 
-blockquote,
-hr {
+blockquote, hr {
   margin: 2.4em 0
 }
 
@@ -89,8 +80,7 @@ hr {
   background: #2085bc
 }
 
-.btn:focus,
-.btn:hover {
+.btn:focus, .btn:hover {
   background: #40affd;
   outline: 0
 }
@@ -106,9 +96,7 @@ hr {
   transition-duration: 0s
 }
 
-.btn:disabled,
-.btn:disabled:active,
-.btn:disabled:hover {
+.btn:disabled, .btn:disabled:active, .btn:disabled:hover {
   cursor: default;
   background: #d0dae3
 }
@@ -136,8 +124,7 @@ form {
   margin-top: 1.25em
 }
 
-.form__field input[type=text],
-.form__field textarea {
+.form__field input[type=text], .form__field textarea {
   -moz-appearance: none;
   -webkit-appearance: none;
   width: 100%;
@@ -153,28 +140,23 @@ form {
   transition: background-color .2s ease, color .2s ease, border-color .2s ease, opacity .2s ease
 }
 
-.form__field input[type=text]::-webkit-input-placeholder,
-.form__field textarea::-webkit-input-placeholder {
+.form__field input[type=text]::-webkit-input-placeholder, .form__field textarea::-webkit-input-placeholder {
   color: #b4b4b4
 }
 
-.form__field input[type=text]:-moz-placeholder,
-.form__field textarea:-moz-placeholder {
+.form__field input[type=text]:-moz-placeholder, .form__field textarea:-moz-placeholder {
   color: #b4b4b4
 }
 
-.form__field input[type=text]::-moz-placeholder,
-.form__field textarea::-moz-placeholder {
+.form__field input[type=text]::-moz-placeholder, .form__field textarea::-moz-placeholder {
   color: #b4b4b4
 }
 
-.form__field input[type=text]:-ms-input-placeholder,
-.form__field textarea:-ms-input-placeholder {
+.form__field input[type=text]:-ms-input-placeholder, .form__field textarea:-ms-input-placeholder {
   color: #b4b4b4
 }
 
-.form__field input[type=text]:focus,
-.form__field textarea:focus {
+.form__field input[type=text]:focus, .form__field textarea:focus {
   outline: 0;
   border-color: #63a7d4;
   box-shadow: 0 0 1.25em rgba(50, 50, 150, .05)
@@ -219,8 +201,7 @@ form {
   }
 }
 
-body,
-html {
+body, html {
   width: 100%;
   height: 100%;
   margin: 0;
@@ -285,8 +266,7 @@ h1 {
   display: block
 }
 
-.placeholder svg.placeholder__empty,
-.placeholder svg.placeholder__error {
+.placeholder svg.placeholder__empty, .placeholder svg.placeholder__error {
   width: 6em;
   height: 3.625em;
   fill: #e1e5ea;
@@ -356,8 +336,7 @@ h1 {
   color: rgba(35, 35, 35, .75)
 }
 
-.model__content h2 .tooltip,
-.model__content h2 span {
+.model__content h2 .tooltip, .model__content h2 span {
   vertical-align: top
 }
 
@@ -417,9 +396,8 @@ h1 {
   min-height: 34.375em
 }
 
-.pane__left,
-.pane__right {
-  width: 100%;
+.pane__left, .pane__right {
+  width: 50%;
   height: 100%;
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
