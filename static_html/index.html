@@ -45,7 +45,7 @@
     </div>
   </div>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
 <script>
   function predict() {
     var quotedFieldList = ['title', 'paperAbstract'];
@@ -187,7 +187,8 @@
           data: {
             labels: sortedInd.map(i => journals[i]),
             datasets: [{
-              data: sortedInd.map(i => probs[i])
+              data: sortedInd.map(i => probs[i]), 
+              backgroundColor: "#003f5c"
             }]
           },
           options: {
@@ -198,13 +199,15 @@
               yAxes: [{
                 scaleLabel: {
                   display: true, 
-                  labelString: "Journals"
+                  labelString: "Journals", 
+                  fontSize: 18
                 }
               }], 
               xAxes: [{
                 scaleLabel: {
                   display: true, 
-                  labelString: "Probability"
+                  labelString: "Probability", 
+                  fontSize: 18
                 }
               }]
             }
